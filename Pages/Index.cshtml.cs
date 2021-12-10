@@ -10,6 +10,7 @@ namespace RazorPage2.Pages
 {
     public class IndexModel : PageModel
     {
+        public string Abc { get; set; }
         private readonly ILogger<IndexModel> _logger;
 
         public IndexModel(ILogger<IndexModel> logger)
@@ -19,7 +20,8 @@ namespace RazorPage2.Pages
 
         public void OnGet()
         {
-
+            System.Console.WriteLine("On Get Run First");
+            this.Abc = "Run On Get";
         }
     }
 }

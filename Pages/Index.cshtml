@@ -1,10 +1,75 @@
-﻿@page
+﻿@* 
+    1. @(expression) -> HTML (encode): < = &lt; | > = &gt;
+    2. Html.Raw(string) -> HTML (not encode)
+    3. @{ method }
+    4. <text></text> = no tag | @: = no tag
+    5. @if, @for, @foreach, @switch,...
+    6. @functions {
+        Field
+        Property
+        Method
+    }
+    7. Model
+    8. @namespace & @using
+*@
+
+@page
+@namespace Xyz
+@using RazorPage2.Pages
 @model IndexModel
 @{
     ViewData["Title"] = "Home page";
+    var hello = "<div class='alert alert-danger'>Hello world</div>";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+@{
+    string hi = "Hello";
+    int age = 20;
+
+    void SayHi(string name) {
+        var msg = $"{hi} {name}!";
+        <i>@msg</i>
+    }
+}
+
+<h1 class="text-danger">Razor Syntax</h1>
+
+<ul>
+    <li>@(5 + 6)</li>
+
+    <li>PI = @Math.PI</li>
+
+    <li>Sin(PI/4) = @Math.Sin(Math.PI/4)</li>
+
+    <li>1. @("<h1>Hello world!</h1>")</li>
+
+    <li>2. @Html.Raw(hello)</li>
+
+    <li>3. @{SayHi("Tuong");}</li>
+
+    <li>4. @{
+            string[] products = new string[] {"Iphone", "Nokia", "Samsung"};
+            foreach (var product in products)
+            {
+                <text> [@product] </text>
+                @: (@product)
+            }
+        }
+    </li>
+
+    <li>5. @if(age < 22) {
+                <span>You can not access</span>
+            }else{
+                <span>Successful access</span>
+            }
+    </li>
+
+    <li>6. <strong>@Title</strong></li>
+
+    <li>7. @Model.Abc</li>
+</ul>
+
+@functions{
+    string Title { get; set; } = "This is Title";
+}
+
