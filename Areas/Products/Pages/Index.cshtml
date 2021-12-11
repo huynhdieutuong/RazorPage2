@@ -1,0 +1,11 @@
+@page "/products"
+@model Products.IndexModel
+
+<h1>Products Page</h1>
+
+<a asp-page="/ViewProduct" asp-route-id="1">ViewProduct</a>
+
+<form>
+  <label asp-for="UserName"></label>
+  <input asp-for="UserName" />
+</form>
