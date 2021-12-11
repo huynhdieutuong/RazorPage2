@@ -1,1 +1,13 @@
-<h3>This is the content of ProductBox</h3>
+@* 2.1 @model string
+<h3>@Model</h3> *@
+
+@* 2.2 *@
+@using ProductModel
+@model List<Product>
+
+<ul class="list-group">
+  @foreach (var product in Model)
+  {
+      <li class="list-group-item">@product.Name (<strong>@product.Price</strong>)</li>
+  }
+</ul>

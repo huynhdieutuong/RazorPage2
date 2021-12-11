@@ -4,7 +4,9 @@
 //    - Naming class ProductBoxViewComponent OR
 //    - Extended ViewComponent
 
+using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
+using ProductModel;
 
 namespace ProductComponent
 {
@@ -21,7 +23,17 @@ namespace ProductComponent
         public IViewComponentResult Invoke()
         {
             // return View(); // By default, read content in Default.cshtml
-            return View("Default1");
+            // return View("Default1");
+            // 2.1 return View<string>("Hello world!");
+
+            // 2.2 View<Model>(values)
+            var products = new List<Product>() {
+                new Product() { Name = "Product 1", Description = "Description 1", Price = 1000 },
+                new Product() { Name = "Product 2", Description = "Description 2", Price = 1200 },
+                new Product() { Name = "Product 3", Description = "Description 3", Price = 200 },
+                new Product() { Name = "Product 4", Description = "Description 4", Price = 500 }
+            };
+            return View<List<Product>>(products);
         }
     }
 }
