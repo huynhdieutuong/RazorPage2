@@ -5,6 +5,7 @@
 //    - Extended ViewComponent
 
 using System.Collections.Generic;
+using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using ProductModel;
 
@@ -20,7 +21,7 @@ namespace ProductComponent
         // }
 
         // 2. OR return IViewComponentResult
-        public IViewComponentResult Invoke()
+        public IViewComponentResult Invoke(bool isAscending = true)
         {
             // return View(); // By default, read content in Default.cshtml
             // return View("Default1");
@@ -33,7 +34,18 @@ namespace ProductComponent
                 new Product() { Name = "Product 3", Description = "Description 3", Price = 200 },
                 new Product() { Name = "Product 4", Description = "Description 4", Price = 500 }
             };
-            return View<List<Product>>(products);
+
+            List<Product> _products = null;
+            if (isAscending)
+            {
+                _products = products.OrderBy(product => product.Price).ToList();
+            }
+            else
+            {
+                _products = products.OrderByDescending(product => product.Price).ToList();
+            }
+
+            return View<List<Product>>(_products);
         }
     }
 }
