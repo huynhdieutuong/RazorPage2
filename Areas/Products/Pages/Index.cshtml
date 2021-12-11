@@ -1,5 +1,9 @@
 @page "/products"
 @model Products.IndexModel
+
+@* 4.4 Add Custom TagHelper *@
+@addTagHelper *, RazorPage2
+
 @* @removeTagHelper Microsoft.AspNetCore.Mvc.TagHelpers.AnchorTagHelper, Microsoft.AspNetCore.Mvc.TagHelpers *@
 
 <h1>Products Page</h1>
@@ -15,3 +19,14 @@
   @Html.TextBox("UserName")
   @* Recommend use TagHelper than HtmlHelper *@
 </form>
+
+@{
+  var productList = new List<String>{ "Product 1", "Product 2", "Product 3" };
+}
+
+@* Use mylist TagHelper *@
+<mylist
+  list-title="Product List"
+  list-items="@productList"
+>
+</mylist>
