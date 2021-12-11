@@ -2,9 +2,14 @@
 @{
   ViewData["Title"] = "POST 1";
   Layout = "_PostLayout";
+
+  ViewData["Header"] = "Message";
+  ViewData["Content"] = "This is message content.";
 }
 
 <h1>This is Post 1</h1>
+
+@await Html.PartialAsync("_Message")
 
 @section FooterContent{
   <p>This is footer of Post 1</p>

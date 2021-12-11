@@ -1,0 +1,9 @@
+@{
+  var header = ViewData["Header"] ?? "Default Header";
+  var content = ViewData["Content"] ?? "Default Content";
+}
+
+<div class="alert alert-danger">
+  <strong>@header</strong> <br/>
+  @content
+</div>
