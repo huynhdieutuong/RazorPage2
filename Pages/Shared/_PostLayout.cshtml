@@ -1,0 +1,16 @@
+@{
+  Layout = "_MyLayout";
+}
+
+<div class="row">
+  <div class="col-3 bg-light">
+    LEFT MENU
+  </div>
+  <div class="col-9">
+    @RenderBody()
+  </div>
+</div>
+
+@section FooterContent{
+  @await RenderSectionAsync("FooterContent", required: false)
+}
