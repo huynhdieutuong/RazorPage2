@@ -18,10 +18,17 @@ namespace RazorPage2.Pages
             _logger = logger;
         }
 
-        public void OnGet()
+        public IActionResult OnGet()
         {
-            System.Console.WriteLine("On Get Run First");
-            this.Abc = "Run On Get";
+            // System.Console.WriteLine("On Get Run First");
+            // this.Abc = "Run On Get";
+
+            // Can use Partial or Component direct on PageModel
+            // PageModel: Partial, ViewComponent
+            // return Partial("_Message");
+            return ViewComponent("ProductBox", false);
+
+            // Controller: PartialView, ViewComponent => Learn later
         }
     }
 }
