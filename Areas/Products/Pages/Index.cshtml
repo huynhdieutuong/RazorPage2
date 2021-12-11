@@ -8,4 +8,8 @@
 <form>
   <label asp-for="UserName"></label>
   <input asp-for="UserName" />
+  <hr>
+  @Html.Label("UserName")
+  @Html.TextBox("UserName")
+  @* Recommend use TagHelper than HtmlHelper *@
 </form>
