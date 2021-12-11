@@ -36,7 +36,9 @@
       @RenderBody()
     </div>
 
-    <footer class="bg-success">FOOTER</footer>
+    <footer class="bg-success">
+      @await RenderSectionAsync("FooterContent", required: false)
+    </footer>
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
