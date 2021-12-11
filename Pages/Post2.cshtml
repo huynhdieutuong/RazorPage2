@@ -1,7 +1,24 @@
 @page
+@using ProductModel
 @{
   ViewData["Title"] = "POST 2";
   Layout = "_PostLayout";
 }
 
 <h1>This is Post 2</h1>
+
+@{
+  var product1 = new Product() { Name = "Iphone X", Description = "This is Iphone X...", Price = 1000 };
+  var product2 = new Product() { Name = "Samsung Galaxy 10", Description = "This is Samsung Galaxy 10...", Price = 800 };
+  var product3 = new Product() { Name = "Nokia 3310", Description = "This is Nokia 3310...", Price = 100 };
+}
+
+@* There are 3 ways to use PartialView (_ProductItem.cshtml) and transfer data to _ProductItem *@
+
+<partial name="_ProductItem" model="product1" />
+
+@await Html.PartialAsync("_ProductItem", product2)
+
+@{
+  await Html.RenderPartialAsync("_ProductItem", product3);
+}

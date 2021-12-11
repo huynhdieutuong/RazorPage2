@@ -1,0 +1,13 @@
+@* Create PartialView like Component *@
+
+@using ProductModel
+@model Product
+
+<div class="card my-4 w-50">
+  <h2 class="card-header text-info">@Model.Name</h2>
+  <div class="card-body">
+    <p class="card-text">@Model.Description</p>
+    <p class="card-text">Price: @Model.Price</p>
+    <a href="#" class="btn btn-secondary btn-sm">Buy</a>
+  </div>
+</div>
