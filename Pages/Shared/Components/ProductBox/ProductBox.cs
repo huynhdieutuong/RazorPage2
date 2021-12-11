@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using ProductModel;
+using Services;
 
 namespace ProductComponent
 {
@@ -15,6 +16,12 @@ namespace ProductComponent
     // public class ProductBoxViewComponent
     public class ProductBox : ViewComponent
     {
+        ProductListService productListService;
+        public ProductBox(ProductListService _productListService) // 2.3 Inject ProductListService into ProductBox Component
+        {
+            productListService = _productListService;
+        }
+
         // 1. return string
         // public string Invoke() {
         //     return "Content of ProductBox";
@@ -28,21 +35,14 @@ namespace ProductComponent
             // 2.1 return View<string>("Hello world!");
 
             // 2.2 View<Model>(values)
-            var products = new List<Product>() {
-                new Product() { Name = "Product 1", Description = "Description 1", Price = 1000 },
-                new Product() { Name = "Product 2", Description = "Description 2", Price = 1200 },
-                new Product() { Name = "Product 3", Description = "Description 3", Price = 200 },
-                new Product() { Name = "Product 4", Description = "Description 4", Price = 500 }
-            };
-
             List<Product> _products = null;
             if (isAscending)
             {
-                _products = products.OrderBy(product => product.Price).ToList();
+                _products = productListService.products.OrderBy(product => product.Price).ToList();
             }
             else
             {
-                _products = products.OrderByDescending(product => product.Price).ToList();
+                _products = productListService.products.OrderByDescending(product => product.Price).ToList();
             }
 
             return View<List<Product>>(_products);
