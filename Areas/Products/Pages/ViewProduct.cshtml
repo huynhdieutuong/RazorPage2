@@ -1,3 +1,8 @@
 @page "/products/{id:int?}"
+@model ViewProductModel
 
-<h1>View Product</h1>
+<h1>View Product @Model.ProductId</h1>
+
+<p>Name: @Model.Product.Name</p>
+<p>Description: @Model.Product.Description</p>
+<p>Price: @Model.Product.Price</p>

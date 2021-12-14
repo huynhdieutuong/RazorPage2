@@ -20,13 +20,9 @@
   @* Recommend use TagHelper than HtmlHelper *@
 </form>
 
-@{
-  var productList = new List<String>{ "Product 1", "Product 2", "Product 3" };
-}
-
 @* Use mylist TagHelper *@
 <mylist
   list-title="Product List"
-  list-items="@productList"
+  list-items="@Model.Products"
 >
 </mylist>

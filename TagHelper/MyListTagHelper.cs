@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Text;
 using Microsoft.AspNetCore.Razor.TagHelpers;
+using ProductModel;
 
 namespace CustomTagHelper
 {
@@ -9,7 +10,7 @@ namespace CustomTagHelper
     {
         // 4.2 Create property for list-title, list-items
         public string ListTitle { get; set; }
-        public List<string> ListItems { get; set; }
+        public List<Product> ListItems { get; set; }
 
         // 4.3 Override Process
         public override void Process(TagHelperContext context, TagHelperOutput output)
@@ -23,7 +24,7 @@ namespace CustomTagHelper
             StringBuilder content = new StringBuilder();
             foreach (var item in ListItems)
             {
-                content.Append($@"<li class=""list-group-item"">{item}</li>");
+                content.Append($@"<li class=""list-group-item""><a href=""/products/{item.Id}"">{item.Name}</a></li>");
             }
             output.Content.SetHtmlContent(content.ToString());
         }
