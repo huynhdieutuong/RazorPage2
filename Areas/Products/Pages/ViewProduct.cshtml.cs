@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 using ProductModel;
@@ -40,5 +41,20 @@ public class ViewProductModel : PageModel
         {
             ViewData["Title"] = $"Product List";
         }
+    }
+
+    // /products/{item.Id}?handler=delete
+    public IActionResult OnPostDelete(int? id)
+    {
+        if (id != null)
+        {
+            var product = _productListService.Find(id.Value);
+            if (product != null)
+            {
+                _productListService.AllProducts().Remove(product);
+            }
+        }
+
+        return RedirectToPage("Index");
     }
 }

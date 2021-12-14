@@ -6,3 +6,7 @@
 <p>Name: @Model.Product.Name</p>
 <p>Description: @Model.Product.Description</p>
 <p>Price: @Model.Product.Price</p>
+
+<form method="post" asp-page="ViewProduct" asp-route-id=@Model.Product.Id asp-page-handler="delete">
+  <button type="submit" class="btn btn-danger">Delete</button>
+</form>
