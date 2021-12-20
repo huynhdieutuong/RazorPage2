@@ -1,0 +1,31 @@
+﻿@page
+@model RazorPage2.Pages.ContactModel
+@{
+  ViewData["Title"] = "Contact";
+}
+
+<h1>Contact</h1>
+<form method="post" asp-page="Contact" class="m-2 p-3 alert-danger">
+  <div class="form-group">
+    <label asp-for="CustomerInfo.CustomerName"></label>
+    <input asp-for="CustomerInfo.CustomerName" class="form-control" />
+  </div>
+  <div class="form-group">
+    <label asp-for="CustomerInfo.Email"></label>
+    <input asp-for="CustomerInfo.Email" class="form-control" />
+  </div>
+  <div class="form-group">
+    <label asp-for="CustomerInfo.YearOfBirth"></label>
+    <input asp-for="CustomerInfo.YearOfBirth" class="form-control" />
+  </div>
+  <div class="form-group">
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </div>
+</form>
+
+<p>Customer Info:</p>
+<ul>
+  <li>UserName: @Model.CustomerInfo?.CustomerName</li>
+  <li>Email: @Model.CustomerInfo?.Email</li>
+  <li>YearOfBirth: @Model.CustomerInfo?.YearOfBirth</li>
+</ul>
