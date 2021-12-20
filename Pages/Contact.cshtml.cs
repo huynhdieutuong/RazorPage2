@@ -20,12 +20,14 @@ namespace RazorPage2.Pages
         [BindProperty]
         [DataType(DataType.Upload)]
         [Required(ErrorMessage = "Choose a file to upload")]
+        // [FileExtensions(Extensions = "jpg, png, gif")] // only work with string, not IFormFile
+        [CheckFileExtensions(Extensions = "jpg, png, gif")] // clone FileExtensions source to custome for IFormFile
         [DisplayName("File upload")]
         public IFormFile FileUpload { get; set; }
 
         [BindProperty]
         [DataType(DataType.Upload)]
-        [Required(ErrorMessage = "Choose files to upload")]
+        // [Required(ErrorMessage = "Choose files to upload")]
         [DisplayName("Files upload")]
         public IFormFile[] FileUploads { get; set; }
 
