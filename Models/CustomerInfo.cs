@@ -16,5 +16,6 @@ public class CustomerInfo
 
     [Display(Name = "Year of birth")]
     [Range(1970, 2000, ErrorMessage = "{0} must between {1}-{2}")]
+    [EvenNumber]
     public int? YearOfBirth { get; set; }
 }
