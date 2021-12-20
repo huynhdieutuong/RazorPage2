@@ -23,6 +23,12 @@ namespace RazorPage2.Pages
         [DisplayName("File upload")]
         public IFormFile FileUpload { get; set; }
 
+        [BindProperty]
+        [DataType(DataType.Upload)]
+        [Required(ErrorMessage = "Choose files to upload")]
+        [DisplayName("Files upload")]
+        public IFormFile[] FileUploads { get; set; }
+
         public string Message { get; set; }
         private readonly IWebHostEnvironment _environment;
 
@@ -48,6 +54,13 @@ namespace RazorPage2.Pages
                     using var filestream = new FileStream(filepath, FileMode.Create);
                     // Copy file to filestream
                     FileUpload.CopyTo(filestream);
+                }
+
+                foreach (var file in FileUploads)
+                {
+                    var filepath = Path.Combine(_environment.WebRootPath, "uploads", file.FileName);
+                    using var filestream = new FileStream(filepath, FileMode.Create);
+                    file.CopyTo(filestream);
                 }
             }
             else
