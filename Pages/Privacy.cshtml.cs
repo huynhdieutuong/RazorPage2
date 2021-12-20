@@ -11,16 +11,8 @@ namespace RazorPage2.Pages
 {
     public class PrivacyModel : PageModel
     {
-        // [BindProperty] - Default binding in POST
-        // [BindProperty(SupportsGet = true)] - Support binding in GET
-        // /privacy.html?UserId=abc&Email=tuong@gmail.com&UserName=Tuong
         [BindProperty]
-        [DisplayName("Your Id")]
-        public string UserId { get; set; }
-        [BindProperty]
-        public string Email { get; set; }
-        [BindProperty]
-        public string UserName { get; set; }
+        public UserContact UserContact { get; set; }
         private readonly ILogger<PrivacyModel> _logger;
 
         public PrivacyModel(ILogger<PrivacyModel> logger)
@@ -33,9 +25,9 @@ namespace RazorPage2.Pages
         }
         public void OnPost()
         {
-            System.Console.WriteLine(UserId);
-            System.Console.WriteLine(Email);
-            System.Console.WriteLine(UserName);
+            System.Console.WriteLine(UserContact.UserId);
+            System.Console.WriteLine(UserContact.Email);
+            System.Console.WriteLine(UserContact.UserName);
         }
     }
 }

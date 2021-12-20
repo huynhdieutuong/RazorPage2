@@ -12,17 +12,17 @@
 <form class="bg-light p-2 m-2" method="post" asp-page="Privacy">
   <div class="form-group">
     @* <label for="userId">UserId</label> *@
-    <label asp-for="@Model.UserId"></label> @*"Your Id"*@
+    <label asp-for="@Model.UserContact.UserId"></label> @*"Your Id"*@
     @* <input type="text" class="form-control" id="userId" name="UserId"> *@
-    <input class="form-control" asp-for="@Model.UserId">
+    <input class="form-control" asp-for="@Model.UserContact.UserId">
   </div>
   <div class="form-group">
-    <label for="email">Email</label>
-    <input type="email" class="form-control" id="email" name="Email">
+    <label asp-for="UserContact.Email">Email</label>
+    <input class="form-control" asp-for="@Model.UserContact.Email">
   </div>
   <div class="form-group">
-    <label for="userName">UserName</label>
-    <input type="text" class="form-control" id="userName" name="UserName">
+    <label asp-for="UserContact.UserName">UserName</label>
+    <input class="form-control" asp-for="@Model.UserContact.UserName">
   </div>
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>
@@ -30,9 +30,9 @@
 <div class="alert alert-danger">
     <p>User Info</p>
     <ul>
-        <li>UserId: @Model.UserId</li>
-        <li>Email: @Model.Email</li>
-        <li>UserName: @Model.UserName</li>
+        <li>UserId: @Model.UserContact.UserId</li>
+        <li>Email: @Model.UserContact.Email</li>
+        <li>UserName: @Model.UserContact.UserName</li>
     </ul>
 </div>
 
