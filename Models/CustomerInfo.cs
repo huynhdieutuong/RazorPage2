@@ -7,6 +7,7 @@ public class CustomerInfo
     [Display(Name = "Customer name")]
     [Required(ErrorMessage = "{0} is required")]
     [StringLength(20, MinimumLength = 3, ErrorMessage = "{0} must be between {2}-{1} characters")]
+    [ModelBinder(BinderType = typeof(UserNameBinding))]
     public string CustomerName { get; set; }
 
     [DisplayName("Email address")]
