@@ -5,7 +5,7 @@
 }
 
 <h1>Contact</h1>
-<form method="post" asp-page="Contact" class="m-2 p-3 alert-danger">
+<form method="post" asp-page="Contact" class="m-2 p-3 alert-danger" enctype="multipart/form-data">
   @* Show all validate errors *@
   <div asp-validation-summary="All"></div>
 
@@ -23,6 +23,11 @@
     <label asp-for="CustomerInfo.YearOfBirth"></label>
     <input asp-for="CustomerInfo.YearOfBirth" class="form-control" />
     <span asp-validation-for="CustomerInfo.YearOfBirth"></span>
+  </div>
+  <div class="form-group">
+    <label asp-for="FileUpload"></label>
+    <input asp-for="FileUpload" class="form-control" />
+    <span asp-validation-for="FileUpload"></span>
   </div>
   <div class="form-group">
     <button type="submit" class="btn btn-primary">Submit</button>
